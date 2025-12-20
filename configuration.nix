@@ -99,6 +99,7 @@
 		alsa-utils # audio
 		haskellPackages.sha256
 		pv
+		brightnessctl
 	];
 
 	programs = {
