@@ -108,7 +108,6 @@
 		pv
 		brightnessctl
 		lshw
-		pciutils
 	];
 
 	programs = {
