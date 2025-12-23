@@ -107,6 +107,8 @@
 		haskellPackages.sha256
 		pv
 		brightnessctl
+		lshw
+		pciutils
 	];
 
 	programs = {
@@ -132,7 +134,10 @@
 	hardware.graphics.enable = true;
 
 	# load nvidia driver for xorg and wayland
-	services.xserver.videoDrivers = [ "nvidia" ];
+	services.xserver.videoDrivers = [
+		"amdgpu"
+		"nvidia"
+	];
 
 	hardware.nvidia = {
 		# modesetting required
@@ -151,6 +156,17 @@
 		# enable nvidia settings menu
 		# run: nvidia-settings
 		nvidiaSettings = true;
+
+		# prime (igpu-dgpu manager)
+		prime = {
+			offload = {
+				enable = true;
+				enableOffloadCmd = true;
+			};
+
+			amdgpuBusId = "PCI:193:0:0";
+			nvidiaBusId = "PCI:194:0:0";
+		};
 	};
 
 	# Some programs need SUID wrappers, can be configured further or are
