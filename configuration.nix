@@ -9,6 +9,13 @@
 		./hardware-configuration.nix
 	];
 
+	# unfree allows
+	nixpkgs.config.allowUnfreePredicate = pkg:
+		builtins.elem (lib.getName pkg) [
+			"nvidia-x11"
+			"nvidia-settings"
+		];
+
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
@@ -118,6 +125,33 @@
 	environment.pathsToLink = [
 		"/share/zsh"
 	];
+
+	# nvidia settings below
+
+	# enable opengl
+	hardware.graphics.enable = true;
+
+	# load nvidia driver for xorg and wayland
+	services.xserver.videoDrivers = [ "nvidia" ];
+
+	hardware.nvidia = {
+		# modesetting required
+		modesetting.enable = true;
+
+		# enable if graphical corruption or application cashes after waking up from sleep
+		powerManagement.enable = false;
+
+		# turns off gpu when not in use
+		# experimental and only works on modern gpus
+		powerManagement.finegrained = false;
+
+		# use nvidia open source driver (not nouveau)
+		open = false;
+
+		# enable nvidia settings menu
+		# run: nvidia-settings
+		nvidiaSettings = true;
+	};
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
