@@ -8,9 +8,9 @@
 		[ (modulesPath + "/installer/scan/not-detected.nix")
 		];
 
-	boot.initrd.availableKernelModules = [ "xhci_pci" "intel_nvme_remap" "ahci" "nvme" "usb_storage" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
+	boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
 	boot.initrd.kernelModules = [ ];
-	boot.kernelModules = [ "kvm-intel" ];
+	boot.kernelModules = [ "kvm-amd" ];
 	boot.extraModulePackages = [ ];
 
 	fileSystems."/" =
@@ -19,13 +19,7 @@
 			options = [ "subvol=root" ];
 		};
 
-	boot.initrd.luks.devices."crypt".device = "/dev/disk/by-uuid/eb3bb56a-0a3c-4a49-8af0-8b86d395da2f";
-
-	fileSystems."/.swap" =
-		{ device = "/dev/mapper/crypt";
-			fsType = "btrfs";
-			options = [ "subvol=swap" ];
-		};
+	boot.initrd.luks.devices."crypt".device = "/dev/disk/by-uuid/b2514cd5-ee36-43fa-af0e-cb18617ef4c5";
 
 	fileSystems."/home" =
 		{ device = "/dev/mapper/crypt";
@@ -33,8 +27,14 @@
 			options = [ "subvol=home" ];
 		};
 
+	fileSystems."/.swap" =
+		{ device = "/dev/mapper/crypt";
+			fsType = "btrfs";
+			options = [ "subvol=swap" ];
+		};
+
 	fileSystems."/boot" =
-		{ device = "/dev/disk/by-uuid/C9B2-00D3";
+		{ device = "/dev/disk/by-uuid/BDFE-F86B";
 			fsType = "vfat";
 			options = [ "fmask=0077" "dmask=0077" ];
 		};
@@ -42,5 +42,5 @@
 	swapDevices = [ ];
 
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-	hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+	hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
