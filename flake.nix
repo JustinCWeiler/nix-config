@@ -14,7 +14,7 @@
 		nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [
-				#nixos-hardware.nixosModules.framework-16-amd-ai-300-series-nvidia
+				nixos-hardware.nixosModules.framework-16-amd-ai-300-series-nvidia
 				./configuration.nix
 			];
 			specialArgs = {

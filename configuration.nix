@@ -132,6 +132,7 @@
 
 	# display hardware
 	hardware.nvidia = {
+		open = false;
 		prime = {
 			amdgpuBusId = "PCI:193:0:0";
 			nvidiaBusId = "PCI:194:0:0";
