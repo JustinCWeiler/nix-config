@@ -59,6 +59,9 @@
 	programs.sway = {
 		enable = true;
 		wrapperFeatures.gtk = true;
+		extraOptions = [
+			"--unsupported-gpu"
+		];
 	};
 
 	# pipewire
@@ -127,42 +130,9 @@
 		"/share/zsh"
 	];
 
-	# nvidia settings below
-
-	# enable opengl
-	hardware.graphics.enable = true;
-
-	# load nvidia driver for xorg and wayland
-	services.xserver.videoDrivers = [
-		"amdgpu"
-		"nvidia"
-	];
-
+	# display hardware
 	hardware.nvidia = {
-		# modesetting required
-		modesetting.enable = true;
-
-		# enable if graphical corruption or application cashes after waking up from sleep
-		powerManagement.enable = false;
-
-		# turns off gpu when not in use
-		# experimental and only works on modern gpus
-		powerManagement.finegrained = false;
-
-		# use nvidia open source driver (not nouveau)
-		open = false;
-
-		# enable nvidia settings menu
-		# run: nvidia-settings
-		nvidiaSettings = true;
-
-		# prime (igpu-dgpu manager)
 		prime = {
-			offload = {
-				enable = true;
-				enableOffloadCmd = true;
-			};
-
 			amdgpuBusId = "PCI:193:0:0";
 			nvidiaBusId = "PCI:194:0:0";
 		};
