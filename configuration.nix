@@ -113,6 +113,10 @@
 		lshw
 	];
 
+	environment.variables = {
+		WLR_DRM_DEVICES = "/dev/dri/card1";
+	};
+
 	programs = {
 		vim = {
 			enable = true;
@@ -132,10 +136,9 @@
 
 	# display hardware
 	hardware.nvidia = {
-		open = false;
 		prime = {
-			amdgpuBusId = "PCI:194:0:0";
 			nvidiaBusId = "PCI:193:0:0";
+			amdgpuBusId = "PCI:194:0:0";
 		};
 	};
 
