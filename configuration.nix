@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, hostName, ... }:
+{ config, lib, pkgs, hostName, inputs, ... }:
 
 {
 	imports = [ 
@@ -15,6 +15,11 @@
 			"nvidia-x11"
 			"nvidia-settings"
 		];
+
+	# nixpkgs overlays
+	nixpkgs.overlays = [
+		inputs.nixpkgs-wayland.overlay
+	];
 
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
