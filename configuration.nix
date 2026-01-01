@@ -14,6 +14,8 @@
 		builtins.elem (lib.getName pkg) [
 			"nvidia-x11"
 			"nvidia-settings"
+			"steam"
+			"steam-unwrapped"
 		];
 
 	# nixpkgs overlays
@@ -59,15 +61,6 @@
 
 	# gnome secrets
 	services.gnome.gnome-keyring.enable = true;
-
-	# sway
-	programs.sway = {
-		enable = true;
-		wrapperFeatures.gtk = true;
-		extraOptions = [
-			"--unsupported-gpu"
-		];
-	};
 
 	# pipewire
 	security.rtkit.enable = true;
@@ -123,6 +116,14 @@
 	};
 
 	programs = {
+		sway = {
+			enable = true;
+			wrapperFeatures.gtk = true;
+			extraOptions = [
+				"--unsupported-gpu"
+			];
+		};
+
 		vim = {
 			enable = true;
 			defaultEditor = true;
@@ -133,6 +134,8 @@
 		
 		zsh.enable = true;
 		bash.enable = true;
+
+		steam.enable = true;
 	};
 
 	environment.pathsToLink = [
