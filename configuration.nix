@@ -109,6 +109,7 @@
 		pv
 		brightnessctl
 		lshw
+		usbutils
 	];
 
 	environment.variables = {
