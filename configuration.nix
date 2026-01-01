@@ -143,10 +143,32 @@
 	];
 
 	# display hardware
-	hardware.nvidia = {
-		prime = {
-			nvidiaBusId = "PCI:193:0:0";
-			amdgpuBusId = "PCI:194:0:0";
+	hardware = {
+		nvidia = {
+			prime = {
+				nvidiaBusId = "PCI:193:0:0";
+				amdgpuBusId = "PCI:194:0:0";
+			};
+		};
+
+		bluetooth = {
+			enable = true;
+			powerOnBoot = true;
+			settings = {
+				General = {
+					# shows battery charge of connected
+					# devices on supported bt adapters
+					Experimental = true;
+					# when enabled other devices can connect faster
+					# at a higher power cost
+					FastConnectable = true;
+				};
+				Policy = {
+					# Enable all controllers when they are found
+					# This includes at boot and plugged in later
+					AutoEnable = true;
+				};
+			};
 		};
 	};
 
