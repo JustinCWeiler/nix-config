@@ -113,6 +113,7 @@
 		brightnessctl
 		lshw
 		usbutils
+		exfat
 	];
 
 	environment.variables = {
