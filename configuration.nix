@@ -107,6 +107,7 @@
 		mako # notif system by swaywm maintainer
 		pavucontrol # audio control
 		toybox # common linux commands
+		coreutils-prefixed # gnu coreutils with g- prefix e.g. gtar
 		alsa-utils # audio
 		haskellPackages.sha256
 		pv
