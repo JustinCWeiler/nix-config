@@ -144,6 +144,8 @@
 		steam.enable = true;
 	};
 
+	services.flatpak.enable = true;
+
 	environment.pathsToLink = [
 		"/share/zsh"
 	];
