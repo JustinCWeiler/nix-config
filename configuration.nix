@@ -101,13 +101,7 @@
 	environment.systemPackages = with pkgs; [
 		home-manager
 		wget
-		grim # screenshot
-		slurp # screenshot
-		wl-clipboard # clipboard
-		mako # notif system by swaywm maintainer
-		pavucontrol # audio control
-		toybox # common linux commands
-		coreutils-prefixed # gnu coreutils with g- prefix e.g. gtar
+		coreutils
 		alsa-utils # audio
 		haskellPackages.sha256
 		pv
