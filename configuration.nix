@@ -175,6 +175,8 @@
 		};
 
 		inputmodule.enable = true;
+
+		steam-hardware.enable = true;
 	};
 
 	# Some programs need SUID wrappers, can be configured further or are
