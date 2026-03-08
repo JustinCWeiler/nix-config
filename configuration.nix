@@ -119,6 +119,12 @@
 		lshw
 		usbutils
 		exfat
+		(pkgs.writeShellApplication {
+			name = "gsc";
+			text = ''
+				gamescope -W 3840 -H 2160 --prefer-vk-device 1002:1114 -- nvidia-offload "$@"
+			'';
+		})
 	];
 
 	environment.variables = {
@@ -146,6 +152,8 @@
 		bash.enable = true;
 
 		steam.enable = true;
+
+		gamescope.enable = true;
 	};
 
 	services.flatpak.enable = true;
