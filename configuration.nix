@@ -131,6 +131,7 @@
 
 	environment.variables = {
 		WLR_DRM_DEVICES = "/dev/dri/card1";
+		WLR_RENDERER = "vulkan";
 	};
 
 	programs = {
