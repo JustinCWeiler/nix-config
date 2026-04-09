@@ -59,8 +59,6 @@
 		enable = true;
 	};
 
-	services.desktopManager.plasma6.enable = true;
-
 	# gnome secrets
 	services.gnome.gnome-keyring.enable = true;
 
