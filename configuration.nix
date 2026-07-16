@@ -102,7 +102,7 @@
 		isNormalUser = true;
 		# wheel: sudo permission
 		# seat: seatd
-		extraGroups = [ "wheel" "seat" "networkmanager" ];
+		extraGroups = [ "wheel" "seat" "networkmanager" "wireshark" ];
 		shell = pkgs.zsh;
 	};
 
@@ -155,6 +155,12 @@
 		steam.enable = true;
 
 		gamescope.enable = true;
+
+		wireshark = {
+			enable = true;
+			dumpcap.enable = true;
+			usbmon.enable = true;
+		};
 	};
 
 	services.flatpak.enable = true;
