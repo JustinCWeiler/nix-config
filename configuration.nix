@@ -102,7 +102,7 @@
 		isNormalUser = true;
 		# wheel: sudo permission
 		# seat: seatd
-		extraGroups = [ "wheel" "seat" "networkmanager" "wireshark" ];
+		extraGroups = [ "wheel" "seat" "networkmanager" "wireshark" "dialout" ];
 		shell = pkgs.zsh;
 	};
 
