@@ -16,6 +16,7 @@
 			"nvidia-settings"
 			"steam"
 			"steam-unwrapped"
+			"zoom"
 		];
 
 	# nixpkgs overlays
@@ -161,6 +162,8 @@
 			dumpcap.enable = true;
 			usbmon.enable = true;
 		};
+
+		zoom-us.enable = true;
 	};
 
 	services.flatpak.enable = true;
